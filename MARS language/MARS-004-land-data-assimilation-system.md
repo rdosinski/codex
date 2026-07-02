@@ -23,6 +23,8 @@ Operational configurations will run in parallel for each of MR, S2S and SEAS. Th
 
 3.	This option is to create a new class ld for ldas, and to use the same stream as that of the target forecasting system (enfo/eefo/mmsf).
 
+4. Option 4 is similar to option 1. In operations, class od is used while in research class rd. Instead of introducing a new key to distinguish BRT / NRT runs, just two separate streams are created. To archive statistics of the LDAS fields two additional statistical variants of these streams are created.
+
 ### Analysis
 It was discussed to include a new class ld for ldas operational data, but we would need either a different solution for research data, which complicates life for everyone, or else a complicated solution for safely separating operational and research data in class=ld. Using new streams for the instantaneous and derived ldas / ldst statistics allows to have the same layout under class od and rd, and even member state classes should that be required in the future. It avoids relying on specific expver ranges reserved for research experiments, and allows a clean introduction of the required mars keywords under the new streams.
 
@@ -33,7 +35,7 @@ It was considered that using the names of the streams (enfo/eefo/mmsf) in the co
 
 
 ## Decision
-Four new mars streams will be created for the land data assimilation system. As there is at the moment only a distinction needed into a near-real-time and a behind-real-time configuration and as it is also unlikely that there will be more options, the stream names include this distinction rather adding an additional key in MARS with only two possible options. Two streams will be created for the statistics of the near-real-time and behind-real-time ldas data. The four streams will be the following ones:
+Option 4 is the most approriate way for archiving LDAS. It has the advantage that operations and research can have the same layour. A new MARS is not required. Four new mars streams will be created instead for the land data assimilation system. As there is at the moment only a distinction needed into a near-real-time and a behind-real-time configuration and as it is also unlikely that there will be more options, the stream names include this distinction rather adding an additional key in MARS with only two possible options. Two streams will be created for the statistics of the near-real-time and behind-real-time ldas data. The four streams will be the following ones:
 
 | Stream mars abbreviation | Stream name |
 |:------------:|:-------------|
@@ -51,7 +53,7 @@ The target forecasting system as well as the cycle of the LDAS system will be sp
 * 50r2-enfo
 * 50r2-sfdd
 
-anoffset is included in the mars namespace of the near-real-time case and absent in the behind-real-time case. The mars key timespan is used and additionally in the statistical streams ldst and ldsb the mars key stattype.
+anoffset is included in the mars namespace of the near-real-time case and absent in the behind-real-time case. The mars key timespan is used and additionally in the statistical streams ldst and ldsb the mars key stattype. This allows to archive monthly and daily statistics and using the time keyword also monthly synoptic statistics are possible. 
 
 ### Related Decisions
 This decisision is in line with the implementation done for the hydrological data.
