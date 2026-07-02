@@ -35,7 +35,7 @@ It was considered that using the names of the streams (enfo/eefo/mmsf) in the co
 
 
 ## Decision
-Option 4 is the most approriate way for archiving LDAS. It has the advantage that operations and research can have the same layour. A new MARS is not required. Four new mars streams will be created instead for the land data assimilation system. As there is at the moment only a distinction needed into a near-real-time and a behind-real-time configuration and as it is also unlikely that there will be more options, the stream names include this distinction rather adding an additional key in MARS with only two possible options. Two streams will be created for the statistics of the near-real-time and behind-real-time ldas data. The four streams will be the following ones:
+Option 4 is the most approriate way for archiving LDAS. It has the advantage that operations and research can have the same layout. A new MARS key is not required. Four new mars streams will be created instead for the land data assimilation system. As there is at the moment only a distinction needed into a near-real-time and a behind-real-time configuration and as it is also unlikely that there will be more options, the stream names include this distinction rather adding an additional key in MARS with only two possible options. Two streams will be created for the statistics of the near-real-time and behind-real-time ldas data. The four streams will be the following ones:
 
 | Stream mars abbreviation | Stream name |
 |:------------:|:-------------|
